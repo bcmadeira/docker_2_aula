@@ -34,6 +34,19 @@ services:
     depends_on:
       - mysql
 
+
+  db:
+    image: mysql:8.0
+    container_name: wordpress-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: senha
+      MYSQL_ROOT_PASSWORD: senha_root
+    volumes:
+      - ./src/db:/var/lib/mysql
+
   wordpress:
     depends_on:
       - db
